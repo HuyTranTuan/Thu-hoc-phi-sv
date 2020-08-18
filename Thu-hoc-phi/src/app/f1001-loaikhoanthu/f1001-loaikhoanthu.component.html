@@ -1,0 +1,114 @@
+<br>
+<div class="container" style="width: 1500px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: #F0F2F4;">DANH MỤC LOẠI KHOẢN THU</h2>
+        <div style="background-color: #F0F2F4; text-align: right;">
+            <button mat-raised-button color="success" (click)="exportToExcel()"><i class="fa fa-file-excel-o fa-2x"></i></button>&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="primary"><i class="fa fa-file-word-o fa-2x"></i></button>&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="add" [routerLink]="['/loaikhoanthu/add']"><span class="material-icons" style="color: blueviolet;">add</span></button>&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+    <br>
+
+    <!-- Filter -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px; border: thin; border-color: blueviolet;">
+        <div style="float: left;">
+            <h4 style="float: left; padding-top: 13px;">Tính chất khoản thu</h4>&nbsp;&nbsp;
+            <mat-form-field style="width: 180px;" appearance="outline">
+                <mat-select style="width: 160px;"[dataSource]="ItemsArray1" [(ngModel)]="IdTinhChatKhoanThu">
+                    <mat-option *ngFor="let i of ItemsArray1" value="{{i.id}}">{{i.tenTinhChatKhoanThu}}</mat-option>
+                </mat-select>
+            </mat-form-field>&nbsp;&nbsp;
+        </div>
+
+        <div style="float: left;">
+            <h4 style="float: left; padding-top: 13px;">Mã loại khoản thu</h4>&nbsp;&nbsp;
+            <mat-form-field style="width: 180px;" appearance="outline">
+                <input matInput type="text" [(ngModel)]="Id">
+            </mat-form-field>&nbsp;&nbsp;
+        </div>
+
+        <div style="float: left;">
+            <h4 style="float: left; padding-top: 13px;">Tên loại khoản thu</h4>&nbsp;&nbsp;
+            <mat-form-field style="width: 180px;" appearance="outline">
+                <input matInput type="text" [(ngModel)]="TenLoaiKhoanThu">
+            </mat-form-field>&nbsp;&nbsp;
+        </div>
+
+        <div style="float: left;">
+            <h4 style="float: left; padding-top: 13px;">Trạng thái</h4>&nbsp;&nbsp;
+            <mat-form-field style="width: 180px;" appearance="outline">
+                <mat-select style="width: 160px;">
+                    <mat-option value="option1"></mat-option>
+                </mat-select>
+            </mat-form-field>&nbsp;&nbsp;
+        </div>
+
+        <div style="padding-top: 13px;">
+            <button mat-raised-button color="" (click)="getDimensionsByFind()"><span class="material-icons">search</span></button>&nbsp;
+            <button mat-raised-button color="" (click)="reset()"><span class="material-icons">refresh</span></button>
+        </div>
+    </div>
+    <br>
+
+    <!-- Table -->
+    <div style="padding-left: 20px; padding-right: 20px;" #epltable> 
+        <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z8 table-style-three">
+
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef style="width: 80px;">
+                    <mat-checkbox></mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row" style="width: 80px;">
+                    <mat-checkbox></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Tên loại khoản thu </th>
+                <td mat-cell *matCellDef="let element"> {{element.tenLoaiKhoanThu}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="idtinhchatkhoanthu">
+                <th mat-header-cell *matHeaderCellDef> Tính chất khoản thu </th>
+                <td mat-cell *matCellDef="let element"> {{element.tenTinhChatKhoanThu}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="thutu">
+                <th mat-header-cell *matHeaderCellDef> Thứ tự </th>
+                <td mat-cell *matCellDef="let element"> {{element.thuTu}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="use">
+                <th mat-header-cell *matHeaderCellDef> Sử dụng </th>
+                <td mat-cell *matCellDef="let element"> {{element.suDung}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="edit" >
+                <th mat-header-cell *matHeaderCellDef style="width: 80px;"> </th>
+                <td mat-cell *matCellDef="let element" style="width: 80px;">
+                    <button mat-raised-button color="success" [routerLink]="['/loaikhoanthu/put/'+ element.id]"><span class="material-icons">edit</span></button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef style="width: 80px;"> </th>
+                <td mat-cell *matCellDef="let element" style="width: 80px;">
+                    <button mat-raised-button color="warn" [routerLink]="['/loaikhoanthu']" (click)="deleteData(element.id)" (click)="reload()"><span class="material-icons">delete</span></button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
+        <br>
+    </div>
+</div>

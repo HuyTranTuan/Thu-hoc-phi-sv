@@ -1,0 +1,57 @@
+<br>
+<div class="container" style="width: 900px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: #F0F2F4;"> CHỈNH SỬA LOẠI KHOẢN THU</h2>
+        <div style="background-color: #F0F2F4; text-align: right;">
+            <button mat-raised-button [routerLink]="['/loaikhoanthu']"><span class="material-icons">close</span></button>
+        </div>
+    </div>
+    <br>
+    <div style="background-color: #FFFFFF; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <br><br>
+        <div style="padding-left: 80px;">
+            <form [formGroup]="editForm">
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Tính chất khoản thu<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn tính chất khoản thu đi!" formControlName="IdTinhChatKhoanThu">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray" >{{i.tenTinhChatKhoanThu}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdTinhChatKhoanThu.untouched || IdTinhChatKhoanThu.invalid">
+                        Chọn <strong>tính chất khoản thu</strong>
+                    </mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Tên loại khoản thu<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Tên loại khoản thu" style="width: 600px;" type="text" formControlName="TenLoaiKhoanThu">
+                    <mat-error *ngIf="TenLoaiKhoanThu.untouched || TenLoaiKhoanThu.invalid">
+                        Nhập<strong>tên loại khoản thu</strong>
+                    </mat-error><br>
+                    <mat-error *ngIf="errorHandling('TenLoaiKhoanThu', 'minlength')">
+                        <strong>Tên loại khoản thu</strong> ít nhất 6 ký tự!
+                    </mat-error>
+                        
+                </mat-form-field>
+                <br><br>
+                <div>
+                    <mat-form-field appearance="outline" style="width: 200px;">
+                        <mat-label style="font-size: x-large;">Thứ tự</mat-label>
+                        <input matInput placeholder="Thứ tự" style="width: 600px;" type="number" formControlName="ThuTu">
+                    </mat-form-field>
+                    <mat-radio-group formControlName="SuDung">
+                        <mat-radio-button value="true" style="padding-left: 40px;">Sử dụng</mat-radio-button>
+                        <mat-radio-button value="false">Không sử dụng</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <br><br>
+                <div align="center" class="button-wrapper">
+                    <button mat-raised-button type="button" (click)="onSubmit(Id)" color="add"><span class="material-icons" style="color: blueviolet;">brightness_high</span></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-raised-button [routerLink]="['/loaikhoanthu']" color="warn"><span class="material-icons" style="color: blueviolet;">backspace</span></button>
+                </div>
+            </form>
+        </div>
+        <br>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+.example-container {
+    width: auto;
+    height: 880px;
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-sidenav {
+    padding: 80px;
+    height: auto;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.vertical-menu {
+    // background-color: 	rgb(63, 81, 181) !important;
+    background-color: whitesmoke !important;
+}
+mat-drawer {
+    width: 240px;
+}
+
+div.a {
+    position: fixed;
+    bottom: 10px;
+    padding-left: 800px;
+}
+
+
+.nav-link {
+    width: 200px;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.nav-icon {
+    margin-right: 10%; 
+}

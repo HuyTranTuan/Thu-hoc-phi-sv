@@ -1,0 +1,122 @@
+<br>
+<div class="container" style="width: 1500px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: hsl(210, 15%, 95%);">ĐỖ DỰ KIẾN HỌC SINH</h2>
+        <div style="background-color: #F0F2F4; text-align: right;">
+            <button mat-raised-button class="buttoncustom" style="font-size: x-large;">X</button>
+        </div>
+    </div>
+    <br>
+
+    <!-- Filter -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px; border: thin; border-color: blueviolet;margin: auto;">
+        <div style="padding-left: 80px;">
+            <div style="float: left;">
+                <div>
+                    <h4 style="float: left;padding-top: 15px;">Mã học sinh</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 180px;" appearance="outline">
+                        <input matInput type="number" [(ngModel)]="a" style="width: 160px;">
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+    
+            <div style="float: left;">
+                <div>
+                    <h4 style="float: left;padding-top: 15px;">Họ tên</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 180px;" appearance="outline">
+                        <input matInput type="number" [(ngModel)]="a" style="width: 160px;">
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+
+            <div>
+                <div style="float: left;">
+                    <h4 style="padding-top: 15px; float: left;">Khối lớp</h4>&nbsp;&nbsp;
+                    <mat-form-field appearance="outline" style="width: 180px;">
+                        <mat-select style="width: 160px;">
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div>
+                    <h4 style="padding-top: 15px; float: left;">Lớp học</h4>&nbsp;&nbsp;
+                    <mat-form-field appearance="outline" style="width: 180px;">
+                        <mat-select style="width: 160px;">
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button mat-raised-button class="buttoncustom">Tìm</button>&nbsp;&nbsp;
+            <button mat-raised-button class="buttoncustom">Reset</button>
+        </div>
+    </div>
+    <br><br>
+    <!-- Table -->
+    <div style="padding-left: 100px; padding-right: 100px;"> 
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 1000px;margin: auto;">
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef style="width: 80px;">
+                    <mat-checkbox></mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row" style="width: 80px;">
+                    <mat-checkbox></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="stt">
+                <th mat-header-cell *matHeaderCellDef> STT </th>
+                <td mat-cell *matCellDef="let element"> {{element.stt}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="mahs">
+                <th mat-header-cell *matHeaderCellDef> Mã học sinh </th>
+                <td mat-cell *matCellDef="let element"> {{element.mahs}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="hoten">
+                <th mat-header-cell *matHeaderCellDef> Họ tên </th>
+                <td mat-cell *matCellDef="let element"> {{element.hoten}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="gioitinh">
+                <th mat-header-cell *matHeaderCellDef> Giới tính </th>
+                <td mat-cell *matCellDef="let element"> {{element.gioitinh}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ngaysinh">
+                <th mat-header-cell *matHeaderCellDef> Ngày sinh </th>
+                <td mat-cell *matCellDef="let element"> {{element.ngaysinh}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lophoc">
+                <th mat-header-cell *matHeaderCellDef style="width: 120px;"> Lớp học </th>
+                <td mat-cell *matCellDef="let element"> {{element.lophoc}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+        </table>
+        <br>
+        <div align="center">
+            <button mat-raised-button class="buttoncustom">Lưu</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button class="buttoncustom">Đóng</button>
+        </div>
+        <br>
+    </div>
+</div>

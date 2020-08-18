@@ -1,0 +1,159 @@
+<br>
+<div class="container" style="width: 1700px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: #F0F2F4;">DANH MỤC THU HỌC PHÍ</h2>
+    </div>
+    <br>
+
+    <!-- Filter -->
+    <br>
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px; border: thin; border-color: blueviolet;margin: auto;">
+        <div style="padding-left: 180px; background-color: #F0F2F4;">
+            <div style="float: left;">
+                <div>
+                    <h4 style="float: left;padding-top: 13px;">HÌnh thức thu</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 200px;" appearance="outline">
+                        <mat-select style="width: 180px;" [dataSource]="HinhThucThu">
+                            <mat-option *ngFor="let i of HinhThucThu" value="{{i}}">{{ i.tenHinhThucThu }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+
+            <div style="float: left;">
+                <div style="float: left;">
+                    <h4 style="float: left;padding-top: 13px;">Người thu</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 200px;" appearance="outline">
+                        <mat-select style="width: 180px;" [dataSource]="NguoiThu">
+                            <mat-option *ngFor="let i of NguoiThu" value="{{i}}">{{ i.tenNguoiThu }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+            
+            <div style="float: left;">
+                <div>
+                    <h4 style="float: left;padding-top: 13px;">Ngày thu</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 200px;" appearance="outline">
+                        <input matInput [matDatepicker]="picker2" style="width: 190px;">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+            <div style="padding-top: 13px;">
+                <button mat-raised-button style="float: left;" color=""><span class="material-icons">search</span></button>&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button color="add" [routerLink]="['/thuhocphi/addprods']"><span class="material-icons" style="color: blueviolet;">add</span></button>&nbsp;&nbsp;&nbsp;
+            </div>
+            <br><br><br>
+            <div style="float: left;">
+                <div>
+                    <h4 style="float: left;padding-top: 13px;">Mã học sinh</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 200px;" appearance="outline">
+                        <input matInput style="width: 180px;" type="text" [(ngModel)]="IdHocSinh">
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+            <div style="padding-top: 13px;">
+                <button mat-raised-button [routerLink]="['/thuhocphi/detail/'+ IdHocSinh]" color="accent"><span class="material-icons">view_carousel</span></button>&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div style="width: 1700px; background-color: #F0F2F4; float: left; height: auto;"> 
+        <div style="float: left;padding-top: 20px; padding-left: 20px; padding-right: 20px; width: 1660px;background-color: #F0F2F4; padding-bottom: 20px;">
+            <h4>Các khoản thu</h4>
+            <br>
+            <!-- Table -->
+            <div>
+                <table mat-table [dataSource]="ThuHocPhi" class="mat-elevation-z8 table-style-three">
+
+                    <ng-container matColumnDef="id" style="width: 60px;">
+                        <th mat-header-cell *matHeaderCellDef style="width: 60px;"> ID </th>
+                        <td mat-cell *matCellDef="let element" style="width: 60px;"> {{element.id}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="hocsinh">
+                        <th mat-header-cell *matHeaderCellDef> Học sinh </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tenHocSinh}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="hocky">
+                        <th mat-header-cell *matHeaderCellDef> Học kỳ </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tenHocKy}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="khoanthucodinh">
+                        <th mat-header-cell *matHeaderCellDef> Khoản thu cố định </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tenKhoanThuCoDinh}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="dongia1">
+                        <th mat-header-cell *matHeaderCellDef> Đơn giá 1 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.donGiaKhoanThuCoDinh | currency:'VND':"symbol"}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="soluong1">
+                        <th mat-header-cell *matHeaderCellDef> Số lượng 1 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.soLuong1}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="khoanthudichvu">
+                        <th mat-header-cell *matHeaderCellDef> Khoản thu dịch vụ </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tenKhoanThuDichVu}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="dongia2">
+                        <th mat-header-cell *matHeaderCellDef> Đơn giá 2 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.donGiaKhoanThuDichVu | currency:'VND':"symbol"}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="soluong2">
+                        <th mat-header-cell *matHeaderCellDef> Số lượng 2 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.soLuong2}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="khoanthubanhang">
+                        <th mat-header-cell *matHeaderCellDef> Khoản thu bán hàng </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tenKhoanThuCoDinh}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="dongia3">
+                        <th mat-header-cell *matHeaderCellDef> Đơn giá 3</th>
+                        <td mat-cell *matCellDef="let element"> {{element.donGiaKhoanThuBanHang | currency:'VND':"symbol"}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="soluong3">
+                        <th mat-header-cell *matHeaderCellDef> Số lượng 3 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.soLuong3}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="khoanchimiengiam">
+                        <th mat-header-cell *matHeaderCellDef> Khoản chi miễn giảm </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tenKhoanChiMienGiam}} </td>
+                    </ng-container>
+        
+                    <ng-container matColumnDef="thanhtien">
+                        <th mat-header-cell *matHeaderCellDef> Thành tiền </th>
+                        <td mat-cell *matCellDef="let element"> {{element.thanhTien | currency:'VND':"symbol"}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="xoa" style="width: 60px;">
+                        <th mat-header-cell *matHeaderCellDef style="width: 60px;"></th>
+                        <td mat-cell *matCellDef="let element" style="width: 60px;">
+                            <button mat-raised-button color="warn" (click)="deleteData(element.id)" (click)="reload()"><span class="material-icons">delete</span></button>
+                        </td>
+                    </ng-container>
+        
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+            <br>
+        </div>
+    </div>
+    <br><br>
+</div>

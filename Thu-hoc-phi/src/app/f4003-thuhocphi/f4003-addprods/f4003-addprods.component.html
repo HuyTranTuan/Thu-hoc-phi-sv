@@ -1,0 +1,106 @@
+<br>
+<div class="container" style="width: 1000px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: #F0F2F4;">THÊM THU HỌC PHÍ</h2>
+    </div>
+    <br>
+
+    <br>
+    <div style="background-color: #FFFFFF; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <br><br>
+        <div style="padding-left: 80px;">
+            <form [formGroup]="addForm">
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Người thu<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn người thu đi!" formControlName="IdNguoiThu">
+                        <mat-option [value]="i.id" *ngFor="let i of NguoiThu">{{i.tenNguoiThu}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdNguoiThu.untouched || IdNguoiThu.invalid"> Chọn <strong>người thu</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Tên học sinh<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn học sinh đi!" formControlName="IdHocSinh">
+                        <mat-option [value]="i.id" *ngFor="let i of HocSinh">{{ i.tenHocSinh }} &nbsp;&nbsp; {{ i.tenLop }} </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdHocSinh.untouched || IdHocSinh.invalid"> Chọn <strong>học sinh</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Học kỳ<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn học kỳ đi!" formControlName="IdHocKy">
+                        <mat-option [value]="i.id" *ngFor="let i of HocKy">{{i.tenHocKy}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdHocKy.untouched || IdHocKy.invalid"> Chọn <strong>học kỳ</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Tên khoản thu cố định<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn khoản thu đi!" formControlName="IdKhoanThuCoDinh">
+                        <mat-option [value]="i.id" *ngFor="let i of KhoanThuCoDinh">{{ i.tenKhoanThuCoDinh }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdKhoanThuCoDinh.untouched || IdKhoanThuCoDinh.invalid"> Chọn <strong>khoản thu cố định</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Số lượng 1<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập số lượng 1" style="width: 680px;" formControlName="SoLuong1" type="number">
+                    <mat-error *ngIf="SoLuong1.untouched || SoLuong1.invalid"> Nhập <strong>số lượng 1</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Tên khoản thu dịch vụ<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn khoản thu đi!" formControlName="IdKhoanThuDichVu">
+                        <mat-option [value]="i.id" *ngFor="let i of KhoanThuDichVu">{{ i.tenKhoanThuDichVu }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdKhoanThuDichVu.untouched || IdKhoanThuDichVu.invalid"> Chọn <strong>khoản thu dịch vụ</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Số lượng 2<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập số lượng 2" style="width: 680px;" formControlName="SoLuong2" type="number">
+                    <mat-error *ngIf="SoLuong2.untouched || SoLuong2.invalid"> Nhập <strong>số lượng 2</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Tên khoản thu bán hàng<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn khoản thu đi!" formControlName="IdKhoanThuBanHang">
+                        <mat-option [value]="i.id" *ngFor="let i of KhoanThuBanHang">{{ i.tenSanPham }}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdKhoanThuBanHang.untouched || IdKhoanThuBanHang.invalid"> Chọn <strong>khoản thu bán hàng</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Số lượng 3<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập số lượng 3" style="width: 680px;" formControlName="SoLuong3" type="number">
+                    <mat-error *ngIf="SoLuong3.untouched || SoLuong3.invalid"> Nhập <strong>số lượng 3</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Khoản chi miễn giảm<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn khoản chi miễn giảm đi!" formControlName="IdKhoanChiMienGiam">
+                        <mat-option [value]="i.id" *ngFor="let i of KhoanChiMienGiam">{{ i.tenKhoanChiMienGiam }} </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdKhoanChiMienGiam.untouched || IdKhoanChiMienGiam.invalid"> Chọn <strong>khoản chi miễn giảm</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px; float: left;">
+                    <mat-label style="font-size: x-large;">Hình thức thu</mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn hình thức thu đi!" formControlName="IdHinhThucThu">
+                        <mat-option [value]="i.id" *ngFor="let i of HinhThucThu">{{ i.tenHinhThucThu }} </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdHinhThucThu.untouched || IdHinhThucThu.invalid"> Chọn <strong>hình thức thu</strong>!</mat-error>
+                </mat-form-field>
+                <br><br><br>
+            </form>
+            <div align="center">
+                <button mat-raised-button type="button" (click)="onSubmit()" color="add"><span class="material-icons" style="color: blueviolet;">add</span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button [routerLink]="['/thuhocphi']" color="warn"><span class="material-icons" style="color: blueviolet;">backspace</span></button>
+            </div>
+            <br>
+        </div>
+        <br>
+    </div>
+</div>

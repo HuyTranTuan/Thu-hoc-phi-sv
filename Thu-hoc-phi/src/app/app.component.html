@@ -1,0 +1,116 @@
+
+<div>
+  <mat-drawer-container class="example-container">
+    <mat-drawer #drawer class="example-sidenav" mode="side" class="vertical-menu">
+      <mat-nav-list class="nav-list">
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/loaikhoanthu" routerLinkActive="active-list-item" [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon class="nav-icon">category</mat-icon>
+            Loại khoản thu
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/loaikhoanchi" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">widgets</mat-icon>
+            Loại khoản chi
+          </a>
+        </div>
+        <div class="nav-item">
+          <div></div>
+          <a class="nav-link" mat-list-item routerLink="/khoanthucodinh" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">list</mat-icon>
+            Khoản thu cố định
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/khoanthudichvu" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">table_rows</mat-icon>
+            Khoản thu dịch vụ
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/khoanbanhang" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">store</mat-icon>
+            Khoản thu bán hàng
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/khoanchi" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">euro</mat-icon>
+            Khoản chi
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/khoanchimiengiam" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">trending_down</mat-icon>
+            Khoản chi miễn giảm
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/quanlydangkydichvu" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">assignment</mat-icon>
+            Quản lý đăng kí dịch vụ
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/lapkehoachthu" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">menu</mat-icon>
+            Lập kế hoạch thu
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/thuhocphi" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">payment</mat-icon>
+            Thu học phí
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/danhsachphieuthu" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">menu_book</mat-icon>
+            Danh sách khoản thu
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/baocaocongnohocsinh" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">analytics</mat-icon>
+            Báo cáo công nợ học sinh
+          </a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" mat-list-item routerLink="/baocaodangkidichvu" routerLinkActive="active-list-item">
+            <mat-icon class="nav-icon">poll</mat-icon>
+            Báo cáo đăng kí dịch vụ
+          </a>
+        </div>
+      </mat-nav-list>
+    </mat-drawer>
+  
+    <div>
+      <mat-toolbar color="primary">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" class="example-sidenav-content" (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Thu học phí!</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-toolbar>
+    </div>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  
+    <div class="container">
+      <div class="a" style="width: 1200; margin: auto;">
+        Copyright by Huy Tran &#174;
+      </div>
+    </div>
+  </mat-drawer-container>
+</div>
+
+
+

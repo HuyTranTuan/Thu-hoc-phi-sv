@@ -1,0 +1,64 @@
+<div class="container" style="width: 1600px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <div style="width: 600px;background-color: #F0F2F4; height: 1480px; text-align: center; margin: auto;">
+        <br>
+        <div style="width: 580px; border-style: groove;">
+            <br>
+            <div style=" padding-left: 10px; padding-right: 20px; background-color: #F0F2F4; padding-top: 20px;" id="print-section">
+                <br>
+                <h2 style="text-align: center;">Thông tin học sinh</h2>
+                <div>
+                    <div *ngFor="let i of detail1">
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Mã học sinh</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{i.id}}</h4>
+                        </div><br><br><br><br>
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Tên học sinh</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{i.tenHocSinh}}</h4>
+                        </div><br><br><br><br>
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Ngày sinh</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{i.ngaySinh | date:'dd'}}/{{i.ngaySinh | date:'MM'}}/{{i.ngaySinh | date:'yyyy'}}</h4>
+                        </div><br><br><br><br>
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Giới tính</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{i.gioiTinh}}</h4>
+                        </div><br><br><br><br>
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Tên lớp học</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{i.tenLop}}</h4>
+                        </div><br><br><br><br>
+                    </div>
+                </div>
+                <br>
+                <h2 style="text-align: center;">Thông tin hóa đơn</h2>
+                <hr>
+                <div>
+                    <div>
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Hình thức thu</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{data}}</h4>
+                        </div><br><br><br><br>
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Tổng tiền</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{getTotalCost() | currency:'VND':"symbol"}}</h4>
+                        </div><br><br><br><br>
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Khấu trừ</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{getTotalReduce() | currency:'VND':"symbol"}}</h4>
+                        </div><br><br><br><br>
+                        <div>
+                            <h4 style="float: left; padding-top: 10px; padding-right: 10px; padding-left: 20px">Phải trả</h4>
+                            <h4 style="float: right; padding-top: 10px; padding-right: 20px; padding-left: 10px">{{getMustPay() | currency:'VND':"symbol"}}</h4>
+                        </div><br><br><br>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button mat-raised-button printSectionId="print-section" ngxPrint color="beauty"><span class="material-icons">print</span></button>&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button routerLink="/thuhocphi" color="warn"><span class="material-icons" style="color: blueviolet;">backspace</span></button>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</div>

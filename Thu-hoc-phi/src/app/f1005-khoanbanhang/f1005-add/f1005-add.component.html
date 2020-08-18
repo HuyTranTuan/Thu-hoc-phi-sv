@@ -1,0 +1,64 @@
+<br>
+<div class="container" style="width: 900px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: #F0F2F4;">THÊM KHOẢN THU BÁN HÀNG</h2>
+        <div style="background-color: #F0F2F4; text-align: right;">
+            <button mat-raised-button [routerLink]="['/khoanbanhang']"><span class="material-icons">close</span></button>
+        </div>
+    </div>
+    <br>
+    <div style="background-color: #FFFFFF; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <br><br>
+        <div style="padding-left: 80px;">
+            <form [formGroup]="addForm">
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Loại sản phẩm<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn loại sản phẩm đi!" formControlName="IdLoaiSanPham">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray1">{{i.tenLoaiSanPham}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdLoaiSanPham.untouched || IdLoaiSanPham.invalid"> Chọn <strong>sản phẩm</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Loại khoản thu<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn loại khoản thu đi!" formControlName="IdLoaiKhoanThu">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray2">{{i.tenLoaiKhoanThu}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdLoaiKhoanThu.untouched || IdLoaiKhoanThu.invalid"> Chọn <strong>loại khoản thu</strong></mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Tên sản phẩm<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập tên sản phẩm!" style="width: 680px;" type="text" formControlName="TenSanPham">
+                    <mat-error *ngIf="TenSanPham.untouched || TenSanPham.invalid"> Nhập <strong>tên sản phẩm</strong>! </mat-error><br>
+                    <mat-error *ngIf="errorHandling('TenSanPham', 'minlength')"> <strong>Tên sản phẩm</strong> ít nhất 6 ký tự! </mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Đơn giá<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập số tiền!" style="width: 680px;" type="number" formControlName="DonGia">
+                    <mat-error *ngIf="DonGia.untouched || DonGia.invalid"> Nhập <strong>đơn giá</strong>! </mat-error><br>
+                </mat-form-field>
+                <br><br>
+                <div>
+                    <mat-form-field appearance="outline" style="width: 200px; float: left;">
+                        <mat-label style="font-size: x-large;">Thứ tự</mat-label>
+                        <input matInput placeholder="Nhập số thứ tự!" style="width: 180px;" type="number" formControlName="ThuTu">
+                    </mat-form-field>
+                    <mat-radio-group style="padding-left: 80px;" formControlName="SuDung">
+                        <mat-radio-button style="padding-top: 13px;" value="true">Sử dụng</mat-radio-button>
+                        <mat-radio-button value="false">Không sử dụng</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <br><br>
+            </form>
+            <div align="center">
+                <button mat-raised-button type="button" (click)="onSubmit()" color="add"><span class="material-icons" style="color: blueviolet;">add</span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button [routerLink]="['/khoanbanhang']" color="warn"><span class="material-icons" style="color: blueviolet;">backspace</span></button>
+            </div>
+        </div>
+        <br><br>
+    </div>
+</div>

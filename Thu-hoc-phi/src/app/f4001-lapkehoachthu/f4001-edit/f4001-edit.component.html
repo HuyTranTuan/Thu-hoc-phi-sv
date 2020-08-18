@@ -1,0 +1,103 @@
+<br>
+<div class="container" style="width: 1200px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: hsl(210, 15%, 95%);">SỬA KẾ HOẠCH THU</h2>
+        <div style="background-color: #F0F2F4; text-align: right;">
+            <button mat-raised-button [routerLink]="['/lapkehoachthu']"><span class="material-icons">close</span></button>
+        </div>
+    </div>
+    <br>
+    <div style="background-color: #FFFFFF; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <br><br>
+        <div style="padding-left: 50px;">
+            <form [formGroup]="editForm">
+                <mat-form-field appearance="outline" style="width: 900px;">
+                    <mat-label style="font-size: x-large;">Kỳ thu<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 880px;" placeholder="Chọn học kỳ!" formControlName="IdHocKy">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray2">{{i.tenHocKy}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdHocKy.untouched || IdHocKy.invalid"> Chọn <strong>học kỳ</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 900px;">
+                    <mat-label style="font-size: x-large;">Khối<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 880px;" placeholder="Chọn khối!" formControlName="IdKhoi">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray3">{{i.tenKhoi}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdKhoi.untouched || IdKhoi.invalid"> Chọn <strong>khối</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 900px;">
+                    <mat-label style="font-size: x-large;">Khoản thu cố định<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 880px;" placeholder="Chọn khoản thu cố định!" formControlName="IdKhoanThuCoDinh">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray">{{i.tenKhoanThuCoDinh}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdKhoanThuCoDinh.untouched || IdKhoanThuCoDinh.invalid"> Chọn <strong>khoản thu cố định</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 900px;">
+                    <mat-label style="font-size: x-large;">Hình thức<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 880px;" placeholder="Chọn hình thức!" formControlName="IdHinhThucThu">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray1">{{i.tenHinhThucThu}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdHinhThucThu.untouched || IdHinhThucThu.invalid"> Chọn <strong>hình thức thu</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 900px;">
+                    <mat-label style="font-size: x-large;">Số lượng học sinh</mat-label>
+                    <input matInput placeholder="Nhập số lượng học sinh!" style="width: 880px;" formControlName="SoLuongHocSinh">
+                    <mat-error *ngIf="SoLuongHocSinh.untouched || SoLuongHocSinh.invalid"> Nhập <strong>số lượng học sinh</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-radio-group style="padding-left: 80px;" formControlName="BatBuoc">
+                    <mat-radio-button value="true" style="padding-left: 50px;">Bắt buộc</mat-radio-button>
+                    <mat-radio-button value="false" style="padding-left: 150px;">Không bắt buộc</mat-radio-button>
+                </mat-radio-group>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 900px;">
+                    <mat-label style="font-size: x-large;">Ghi chú</mat-label>
+                    <textarea matInput placeholder="Viết gì đó" style="width: 880px;" formControlName="GhiChu"></textarea>
+                </mat-form-field>
+                <br><br>
+            </form>
+            <div align="center">
+                <button mat-raised-button type="button" (click)="onSubmit(Id)" color="add"><span class="material-icons" style="color: blueviolet;">brightness_high</span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button [routerLink]="['/lapkehoachthu']" color="warn"><span class="material-icons" style="color: blueviolet;">backspace</span></button>
+            </div>
+            <br><br>
+            <h2>Danh sách khoản thu</h2>
+            <div style="width: 900px;"> 
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-style-three" style="width: 900px;">
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> ID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ten">
+                        <th mat-header-cell *matHeaderCellDef> Tên khoản thu </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tenKhoanThuCoDinh}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="sotien">
+                        <th mat-header-cell *matHeaderCellDef> Đơn giá </th>
+                        <td mat-cell *matCellDef="let element"> {{element.donGia}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ghichu">
+                        <th mat-header-cell *matHeaderCellDef style="width: 160px;"> Ghi chú </th>
+                        <td mat-cell *matCellDef="let element" style="width: 160px;">{{element.ghiChu}}</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+                <br>
+            </div>
+        </div>
+        <br>
+    </div>
+    <br><br>
+</div>

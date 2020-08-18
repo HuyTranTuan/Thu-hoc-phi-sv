@@ -1,0 +1,77 @@
+<br>
+<div class="container" style="width: 900px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: hsl(210, 15%, 95%);">THÊM KHOẢN THU DỊCH VỤ</h2>
+        <div style="background-color: #F0F2F4; text-align: right;">
+            <button mat-raised-button [routerLink]="['/khoanthudichvu']"><span class="material-icons">close</span></button>
+        </div>
+    </div>
+    <br>
+    <div style="background-color: #FFFFFF; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <br><br>
+        <div style="padding-left: 80px;">
+            <form [formGroup]="addForm">
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Loại khoản thu<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn loại khoản thu đi!" formControlName="IdLoaiKhoanThu">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray">{{i.tenLoaiKhoanThu}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdLoaiKhoanThu.untouched || IdLoaiKhoanThu.invalid"> Chọn <strong>loại khoản thu</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Tên khoản thu dịch vụ<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập tên khoản thu dịch vụ!" style="width: 680px;" formControlName="TenKhoanThuDichVu">
+                    <mat-error *ngIf="TenKhoanThuDichVu.untouched || TenKhoanThuDichVu.invalid"> Nhập <strong>tên khoản thu dịch vụ</strong>! </mat-error><br>
+                    <mat-error *ngIf="errorHandling('TenKhoanThuDichVu', 'minlength')"> <strong>Tên khoản thu dịch vụ</strong> ít nhất 6 ký tự! </mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Đơn giá<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập số tiền!" style="width: 680px;" formControlName="DonGia" type="number">
+                    <mat-error *ngIf="DonGia.untouched || DonGia.invalid"> Nhập <strong>đơn giá</strong>! </mat-error><br>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Đơn giá trả<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập số tiền khi thanh toán!" style="width: 680px;" formControlName="DonGiaTra" type="number">
+                    <mat-error *ngIf="DonGiaTra.untouched || DonGiaTra.invalid"> Nhập <strong>đơn giá trả</strong>! </mat-error><br>
+                </mat-form-field>
+                <br><br>
+                <div>
+                    <mat-form-field appearance="outline" style="width: 200px; float: left;">
+                        <mat-label style="font-size: x-large;">Thứ tự</mat-label>
+                        <input matInput placeholder="Placeholder" style="width: 180px;" formControlName="ThuTu" type="number">
+                    </mat-form-field>
+                    <mat-radio-group style="padding-left: 80px;" formControlName="SuDung">
+                        <mat-radio-button style="padding-top: 13px;" value="true">Sử dụng</mat-radio-button>
+                        <mat-radio-button style="padding-left: 40px;" value="false">Không sử dụng</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <br><br>
+                <div>
+                    <mat-radio-group style="padding-left: 80px;" formControlName="TinhTheoNgay">
+                        <mat-radio-button style="padding-top: 13px;" value="true">Tính theo ngày</mat-radio-button>
+                        <mat-radio-button value="false">Tính theo tháng</mat-radio-button>
+                    </mat-radio-group><br><br>
+                    <mat-radio-group style="padding-left: 280px;" formControlName="TraLaiKhiVang">
+                        <mat-radio-button style="padding-top: 13px;" value="true">Trả lại khi vắng</mat-radio-button>
+                        <mat-radio-button value="false">Không trả lại</mat-radio-button>
+                    </mat-radio-group>
+                </div><br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Ghi chú</mat-label>
+                    <textarea matInput placeholder="Viết gì đó!" style="width: 680px;" formControlName="GhiChu"></textarea>
+                </mat-form-field>
+                <br><br>
+            </form>
+            <div align="center">
+                <button mat-raised-button type="button" (click)="onSubmit()" color="add"><span class="material-icons" style="color: blueviolet;">add</span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button [routerLink]="['/khoanthudichvu']" color="warn"><span class="material-icons" style="color: blueviolet;">backspace</span></button>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

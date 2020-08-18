@@ -1,0 +1,153 @@
+<br>
+<div class="container" style="width: 1500px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: #F0F2F4;">DANH MỤC BÁO CÁO ĐĂNG KÍ DỊCH VỤ</h2>
+        <div style="background-color: #F0F2F4; text-align: right;">
+            <button mat-raised-button color="success" (click)="exportToExcel()"><i class="fa fa-file-excel-o fa-2x"></i></button>&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="primary"><i class="fa fa-file-word-o fa-2x"></i></button>&nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+    <br>
+
+    <!-- Filter -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px; border: thin; border-color: blueviolet;margin: auto;">
+        <div style="padding-left: 180px;">
+            <div style="float: left;">
+                <div style="float: left;">
+                    <h4 style="float: left; padding-top: 10px;">Mã phiếu thu</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 160px;" appearance="outline">
+                        <input matInput type="text" [(ngModel)]="a">
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div>
+                    <h4 style="float: left; padding-top: 10px;">Khối lớp</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 180px;" appearance="outline">
+                        <mat-select>
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+    
+            <div style="float: left;">
+                <div>
+                    <h4 style="float: left; padding-top: 10px;">Ngày thu</h4>&nbsp;&nbsp;
+                    <mat-form-field appearance="outline" style="width: 200px;">
+                        <mat-select style="width: 180px;">
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div>
+                    <h4 style="float: left; padding-top: 10px;">Lớp học</h4>&nbsp;&nbsp;
+                    <mat-form-field appearance="outline" style="width: 200px;">
+                        <mat-select style="width: 180px;">
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+            <div style="float: left;">
+                <div>
+                    <h4 style="float: left; padding-top: 10px;">Người thu</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 160px;" appearance="outline">
+                        <input matInput type="text" [(ngModel)]="a">
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div>
+                    <h4 style="float: left; padding-top: 10px;">Tên học sinh</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 160px;" appearance="outline">
+                        <input matInput type="text" [(ngModel)]="a">
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+            <div style="float: left;">
+                <div>
+                    <h4 style="float: left; padding-top: 10px;">Hình thức thu</h4>&nbsp;&nbsp;
+                    <mat-form-field style="width: 160px;" appearance="outline">
+                        <input matInput type="text" [(ngModel)]="a">
+                    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+                <div style="padding-top: 13px;">
+                    <button mat-raised-button><span class="material-icons">search</span></button>&nbsp;&nbsp;
+                    <button mat-raised-button><span class="material-icons">refresh</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Table -->
+    <div style="padding-left: 20px; padding-right: 20px;" #epltable> 
+        <table mat-table [dataSource]="DangKyDichVu" class="mat-elevation-z8 table-style-three table-responsive">
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef style="width: 80px;"> ID </th>
+                <td mat-cell *matCellDef="let element" style="width: 80px;"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="thang">
+                <th mat-header-cell *matHeaderCellDef> Tháng </th>
+                <td mat-cell *matCellDef="let element"> {{element.tenDotThu}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="idhocsinh">
+                <th mat-header-cell *matHeaderCellDef> ID học sinh </th>
+                <td mat-cell *matCellDef="let element"> {{element.idHocSinh}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="hoten">
+                <th mat-header-cell *matHeaderCellDef> Họ tên </th>
+                <td mat-cell *matCellDef="let element"> {{element.tenHocSinh}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ngaysinh">
+                <th mat-header-cell *matHeaderCellDef> Ngày sinh </th>
+                <td mat-cell *matCellDef="let element"> {{element.ngaySinh | date:'dd'}}/{{element.ngaySinh | date:'MM'}}/{{element.ngaySinh | date:'yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="gioitinh">
+                <th mat-header-cell *matHeaderCellDef> Giới tính </th>
+                <td mat-cell *matCellDef="let element"> {{element.gioiTinh}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="lop">
+                <th mat-header-cell *matHeaderCellDef> Tên lớp </th>
+                <td mat-cell *matCellDef="let element"> {{element.tenLop}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="khoanthudichvu">
+                <th mat-header-cell *matHeaderCellDef> Khoản thu </th>
+                <td mat-cell *matCellDef="let element"> {{element.tenKhoanThuDichVu}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dongia">
+                <th mat-header-cell *matHeaderCellDef> Đơn giá </th>
+                <td mat-cell *matCellDef="let element"> {{element.donGia | currency:'VND':"symbol"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="soluong">
+                <th mat-header-cell *matHeaderCellDef> Số lượng </th>
+                <td mat-cell *matCellDef="let element"> {{element.soLuong}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="thanhtien">
+                <th mat-header-cell *matHeaderCellDef> Thàng tiền </th>
+                <td mat-cell *matCellDef="let element"> {{element.thanhTien | currency:'VND':"symbol"}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+        <br>
+    </div>
+</div>

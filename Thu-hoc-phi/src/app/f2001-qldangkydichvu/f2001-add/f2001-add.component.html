@@ -1,0 +1,64 @@
+<br>
+<div class="container" style="width: 900px;margin: auto; background-color: #F0F2F4; height: auto;">
+    <br>
+    <!-- Extend -->
+    <div style="background-color: #F0F2F4; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <h2 style="float: left;background-color: #F0F2F4;">THÊM ĐĂNG KÍ DỊCH VỤ</h2>
+        <div style="background-color: #F0F2F4; text-align: right;">
+            <button mat-raised-button [routerLink]="['/quanlydangkydichvu']"><span class="material-icons">close</span></button>
+        </div>
+    </div>
+    <br>
+    <div style="background-color: #FFFFFF; padding-top: 10px; padding-left: 20px; padding-right: 20px;">
+        <br><br>
+        <div style="padding-left: 80px;">
+            <form [formGroup]="addForm">
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Học sinh<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn học sinh!" formControlName="IdHocSinh">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray2">{{i.tenHocSinh}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdHocSinh.untouched || IdHocSinh.invalid"> Chọn <strong>học sinh</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Đợt thu<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn đợt thu!" formControlName="IdDotThu">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray">{{i.tenDotThu}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdDotThu.untouched || IdDotThu.invalid"> Chọn <strong>đợt thu</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Khoản thu dịch vụ<a style="color: red;">*</a></mat-label>
+                    <mat-select style="width: 680px;" placeholder="Chọn khoản thu dịch vụ!" formControlName="IdKhoanThuDichVu">
+                        <mat-option [value]="i.id" *ngFor="let i of ItemsArray1">{{i.tenKhoanThuDichVu}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="IdKhoanThuDichVu.untouched || IdKhoanThuDichVu.invalid"> Chọn <strong>khoản thu dịch vụ</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Đơn vị tính<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập đơn vị tính!" style="width: 680px;" formControlName="DonViTinh" type="text">
+                    <mat-error *ngIf="IdKhoanThuDichVu.untouched || IdKhoanThuDichVu.invalid"> Nhập <strong>đơn vị tính</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Số lượng<a style="color: red;">*</a></mat-label>
+                    <input matInput placeholder="Nhập số lượng!" style="width: 680px;" type="number" formControlName="SoLuong">
+                    <mat-error *ngIf="SoLuong.untouched || SoLuong.invalid"> Nhập <strong>số lượng</strong>!</mat-error>
+                </mat-form-field>
+                <br><br>
+                <mat-form-field appearance="outline" style="width: 700px;">
+                    <mat-label style="font-size: x-large;">Ghi chú</mat-label>
+                    <textarea matInput placeholder="Viết gì đó!" style="width: 680px;" formControlName="GhiChu"></textarea>
+                </mat-form-field>
+            </form>
+            <div align="center">
+                <button mat-raised-button type="button" (click)="onSubmit()" color="add"><span class="material-icons" style="color: blueviolet;">add</span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button mat-raised-button [routerLink]="['/quanlydangkydichvu']" color="warn"><span class="material-icons" style="color: blueviolet;">backspace</span></button>
+            </div>
+        </div>
+        <br><br>
+    </div>
+</div>
